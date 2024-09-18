@@ -21,25 +21,36 @@ import java.util.Scanner;
 public class Main 
 {
   static double gravitationalConstant = 0.00000000006743; /* N*meter^2 / kg^2 */
-  static int speedOfLight = 299792458; /* meters/second */
+  static long speedOfLight = 299792458L; /* meters/second */
+  static double solarMassInKg = 1.988416e30; /* Solar mass in kg */
   
   public static void main(String[] args)
   {
     /***** INTRO SECTION *****/
-    System.out.print("What is the mass (in kg)?: ");
+    System.out.print("Enter the mass (you can append 'SM' for solar masses): ");
     try (Scanner scanner = new Scanner(System.in))
     {
-      double mass = scanner.nextDouble();
-    
+      String input = scanner.nextLine().trim();
+      double massInKg;
+      
+      if (input.toUpperCase().endsWith("SM")) {
+        // If the user enters "SM", treat the input as solar mass
+        double massInSolarMass = Double.parseDouble(input.substring(0, input.length() - 2).trim());
+        massInKg = massInSolarMass * solarMassInKg;
+      } else {
+        // If no "SM", treat the input as kilograms
+        massInKg = Double.parseDouble(input);
+      }
+      
       /***** PROCESSING SECTION *****/ 
-      double schwarzschildRadius = calculateSchwarzschildRadius(gravitationalConstant, speedOfLight, mass);
+      double schwarzschildRadius = calculateSchwarzschildRadius(gravitationalConstant, speedOfLight, massInKg);
       
       /***** OUTPUT SECTION *****/
       System.out.println("The Schwarzschild radius is: " + schwarzschildRadius + " meters");
     }
   }
 
-  public static double calculateSchwarzschildRadius(double gravitationalConstant, int speedOfLight, double mass)
+  public static double calculateSchwarzschildRadius(double gravitationalConstant, long speedOfLight, double mass)
   {
     // Schwarzschild radius formula: (2 * G * M) / (c^2)
     return (2 * gravitationalConstant * mass) / (speedOfLight * speedOfLight);
