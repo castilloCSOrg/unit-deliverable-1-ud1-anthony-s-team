@@ -16,24 +16,31 @@
 *	STATIC METHODS:
 * <list of static methods and which teammate made each>
 *********************************************/
-
+import java.util.Scanner;
 
 public class Main 
 {
-  /***** CONSTANT SECTION *****/
-
+  static long gravitationalConstant = ((long)0.00000000006743); /*N*meter^2 / kg^2 */
+  static int cpeedOfLight = (-299792458); /*meters/seconds*/
   public static void main(String[] args)
   {
-    /***** DECLARATION SECTION *****/
-
-    /***** INITIALIZATION SECTION *****/
-
     /***** INTRO SECTION *****/
-
-    /***** PROCESSING SECTION *****/
-
-    /***** OUTPUT SECTION *****/
+    System.out.println("What is the mass?: ");
+    try (
+    Scanner Mass = new Scanner(System.in))
+    {
+      int M = Mass.nextInt();
     
+    /***** PROCESSING SECTION *****/ 
+    
+    /***** OUTPUT SECTION *****/
+    math(gravitationalConstant, cpeedOfLight);
+    System.out.println(SchwarzschildRadius);
+    Mass.close();
+    }
   }
-  /***** STATIC METHODS *****/
+public static void math (long gravitationalConstant, long cpeedOfLight)
+    {
+    long SchwarzschildRadius = (2 * gravitationalConstant) * (cpeedOfLight * cpeedOfLight) * ;
+    }
 }
