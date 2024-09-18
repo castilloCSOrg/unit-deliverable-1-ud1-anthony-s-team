@@ -1,5 +1,5 @@
 /********************************************
-*	AUTHORS:	<your names>
+*	AUTHORS:	Petyr Dimmick, 
 * COLLABORATORS: <name of peer, tutor, instructor, anyone else who helped>
 *	LAST MODIFIED:	<date of last change>
 ********************************************/
@@ -35,7 +35,7 @@ public class Main
       
       if (input.toUpperCase().endsWith("SM")) {
         // If the user enters "SM", treat the input as solar mass
-        double massInSolarMass = Double.parseDouble(input.substring(0, input.length() - 2).trim());
+        double massInSolarMass = Double.parseDouble(input.substring(0, input.length() - 2).trim()); //Ensures that the characters SM are not used when doing math in #'s
         massInKg = massInSolarMass * solarMassInKg;
       } else {
         // If no "SM", treat the input as kilograms
